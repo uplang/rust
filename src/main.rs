@@ -1,9 +1,10 @@
 //! Command-line tool for parsing UP files
 
-use up::parse;
 use std::env;
 use std::fs;
 use std::process;
+
+use up::parse;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -29,4 +30,3 @@ fn main() {
         }
     }
 }
-
