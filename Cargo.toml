@@ -1,0 +1,35 @@
+[package]
+name = "uplang"
+version = "1.0.0"
+edition = "2021"
+authors = ["UP Lang Contributors"]
+description = "UP (Unified Properties) parser for Rust"
+license = "MIT"
+repository = "https://github.com/uplang/up-rust"
+homepage = "https://uplang.org"
+documentation = "https://docs.rs/uplang"
+readme = "README.md"
+keywords = ["parser", "up", "configuration", "data-format", "config"]
+categories = ["parsing", "config", "encoding"]
+rust-version = "1.70"
+
+[lib]
+name = "uplang"
+path = "src/lib.rs"
+
+[[bin]]
+name = "up-parse"
+path = "src/main.rs"
+required-features = ["cli"]
+
+[dependencies]
+
+[dev-dependencies]
+
+[features]
+default = []
+cli = []
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
