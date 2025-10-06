@@ -3,7 +3,7 @@ use uplang::parse;
 
 #[test]
 fn test_example_01_basic_scalars() {
-    let content = fs::read_to_string("../spec/examples/01-basic-scalars.up")
+    let content = fs::read_to_string("examples/core/01-basic-scalars.up")
         .expect("Failed to read example file");
     let result = parse(&content);
     assert!(result.is_ok(), "Failed to parse: {:?}", result.err());
@@ -13,7 +13,7 @@ fn test_example_01_basic_scalars() {
 
 #[test]
 fn test_example_02_blocks() {
-    let content = fs::read_to_string("../spec/examples/02-blocks.up")
+    let content = fs::read_to_string("examples/core/02-blocks.up")
         .expect("Failed to read example file");
     let result = parse(&content);
     assert!(result.is_ok(), "Failed to parse: {:?}", result.err());
@@ -23,7 +23,7 @@ fn test_example_02_blocks() {
 
 #[test]
 fn test_example_03_lists() {
-    let content = fs::read_to_string("../spec/examples/03-lists.up")
+    let content = fs::read_to_string("examples/core/03-lists.up")
         .expect("Failed to read example file");
     let result = parse(&content);
     assert!(result.is_ok(), "Failed to parse: {:?}", result.err());
@@ -33,7 +33,7 @@ fn test_example_03_lists() {
 
 #[test]
 fn test_example_04_multiline() {
-    let content = fs::read_to_string("../spec/examples/04-multiline.up")
+    let content = fs::read_to_string("examples/core/04-multiline.up")
         .expect("Failed to read example file");
     let result = parse(&content);
     assert!(result.is_ok(), "Failed to parse: {:?}", result.err());
@@ -43,7 +43,7 @@ fn test_example_04_multiline() {
 
 #[test]
 fn test_example_06_comments() {
-    let content = fs::read_to_string("../spec/examples/06-comments.up")
+    let content = fs::read_to_string("examples/core/06-comments.up")
         .expect("Failed to read example file");
     let result = parse(&content);
     assert!(result.is_ok(), "Failed to parse: {:?}", result.err());
