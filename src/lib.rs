@@ -61,7 +61,10 @@ pub enum Value {
     /// List of values
     List(Vec<Value>),
     /// Table with columns and rows
-    Table { columns: Vec<Value>, rows: Vec<Vec<Value>> },
+    Table {
+        columns: Vec<Value>,
+        rows: Vec<Vec<Value>>,
+    },
 }
 
 /// Parse errors
@@ -112,14 +115,25 @@ impl Parser {
 
             match self.parse_line(&mut line_iter, line, line_num) {
                 Ok(node) => nodes.push(node),
-                Err(e) => return Err(ParseError::InvalidSyntax(format!("line {}: {}", line_num + 1, e))),
+                Err(e) => {
+                    return Err(ParseError::InvalidSyntax(format!(
+                        "line {}: {}",
+                        line_num + 1,
+                        e
+                    )))
+                }
             }
         }
 
         Ok(Document { nodes })
     }
 
-    fn parse_line<'a, I>(&self, lines: &mut std::iter::Peekable<I>, line: &str, _line_num: usize) -> Result<Node, ParseError>
+    fn parse_line<'a, I>(
+        &self,
+        lines: &mut std::iter::Peekable<I>,
+        line: &str,
+        _line_num: usize,
+    ) -> Result<Node, ParseError>
     where
         I: Iterator<Item = (usize, &'a &'a str)>,
     {
@@ -145,16 +159,18 @@ impl Parser {
 
     fn parse_key_and_type<'a>(&self, key_part: &'a str) -> (&'a str, Option<String>) {
         if let Some(idx) = key_part.find('!') {
-            (
-                &key_part[..idx],
-                Some(key_part[idx + 1..].to_string()),
-            )
+            (&key_part[..idx], Some(key_part[idx + 1..].to_string()))
         } else {
             (key_part, None)
         }
     }
 
-    fn parse_value<'a, I>(&self, lines: &mut std::iter::Peekable<I>, val_part: &str, type_annotation: Option<&str>) -> Result<Value, ParseError>
+    fn parse_value<'a, I>(
+        &self,
+        lines: &mut std::iter::Peekable<I>,
+        val_part: &str,
+        type_annotation: Option<&str>,
+    ) -> Result<Value, ParseError>
     where
         I: Iterator<Item = (usize, &'a &'a str)>,
     {
@@ -170,7 +186,11 @@ impl Parser {
         }
     }
 
-    fn parse_multiline<'a, I>(&self, lines: &mut std::iter::Peekable<I>, type_annotation: Option<&str>) -> Result<Value, ParseError>
+    fn parse_multiline<'a, I>(
+        &self,
+        lines: &mut std::iter::Peekable<I>,
+        type_annotation: Option<&str>,
+    ) -> Result<Value, ParseError>
     where
         I: Iterator<Item = (usize, &'a &'a str)>,
     {
@@ -339,7 +359,10 @@ port!int 8080
         match &doc.nodes[0].value {
             Value::Block(block) => {
                 assert_eq!(block.len(), 2);
-                assert_eq!(block.get("host"), Some(&Value::String("localhost".to_string())));
+                assert_eq!(
+                    block.get("host"),
+                    Some(&Value::String("localhost".to_string()))
+                );
             }
             _ => panic!("Expected block"),
         }
