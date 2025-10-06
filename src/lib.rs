@@ -1,7 +1,7 @@
 // UP (Unified Properties) parser for Rust
 
 /// Parse UP document from a string
-pub fn parse(input: &str) -> Result<Document, ParseError> {
+pub fn parse(_input: &str) -> Result<Document, ParseError> {
     // Placeholder implementation
     Ok(Document::default())
 }
