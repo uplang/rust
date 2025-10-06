@@ -16,7 +16,7 @@ lint: ## Run linter (clippy)
 	cargo clippy -- -D warnings
 
 .PHONY: build
-build: test ## Build the library and binary
+build: test ## Build the library
 	cargo build --release
 
 .PHONY: clean

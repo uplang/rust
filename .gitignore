@@ -2,10 +2,6 @@
 /target/
 Cargo.lock
 
-# Binary
-up-parse
-up-parser
-
 # Debug files
 *.pdb
 

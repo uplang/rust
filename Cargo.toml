@@ -4,7 +4,7 @@ version = "1.0.0"
 edition = "2021"
 authors = ["UP Lang Contributors"]
 description = "UP (Unified Properties) parser for Rust"
-license = "MIT"
+license = "GPL-3.0"
 repository = "https://github.com/uplang/up-rust"
 homepage = "https://uplang.org"
 documentation = "https://docs.rs/uplang"
@@ -17,18 +17,12 @@ rust-version = "1.70"
 name = "uplang"
 path = "src/lib.rs"
 
-[[bin]]
-name = "up-parse"
-path = "src/main.rs"
-required-features = ["cli"]
-
 [dependencies]
 
 [dev-dependencies]
 
 [features]
 default = []
-cli = []
 
 [package.metadata.docs.rs]
 all-features = true
